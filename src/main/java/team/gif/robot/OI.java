@@ -70,6 +70,7 @@ public class OI {
          * dRT.whileHeld(new EjectCommand());
          *
          */
+        dLB.whenPressed(new CollectorDown());
         dLB.whileHeld(new CollectCommand());
         dDPadUp.whenPressed(new CollectorUp());
         dDPadLeft.whenPressed(new CollectorMid());

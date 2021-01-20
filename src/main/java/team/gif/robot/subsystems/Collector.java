@@ -34,6 +34,7 @@ public class Collector extends SubsystemBase {
     public void setSpeed (double speed) {
         collectorMotor.set(ControlMode.PercentOutput, speed);
         }
+
     public void setSolenoids(boolean zero, boolean one, boolean two) {
         solenoid0.set(zero);
         solenoid1.set(one);
