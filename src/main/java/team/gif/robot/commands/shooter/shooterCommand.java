@@ -32,21 +32,12 @@ public class shooterCommand extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
+        Shooter.getInstance().setRPM(4000);
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        /**
-         * Shooter go pew pew
-         */
-        if (Robot.oi != null && Robot.oi.dLT.get()) {
-            Shooter.getInstance().setSpeed(10);
-        } else{
-            Shooter.getInstance().setSpeed(0);
-        }
-
-
     }
 
     // Returns true when the command should end.
@@ -58,6 +49,6 @@ public class shooterCommand extends CommandBase {
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-
+        Shooter.getInstance().setRPM(0);
     }
 }

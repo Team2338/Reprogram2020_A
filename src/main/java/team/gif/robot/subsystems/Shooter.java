@@ -8,12 +8,9 @@ import edu.wpi.first.wpilibj.controller.PIDController;
 
 public class Shooter extends SubsystemBase {
 
-
     private static Shooter instance = null;
 
-
     public static Shooter getInstance() {
-
         if (instance == null) {
             instance = new Shooter();
         }
@@ -29,12 +26,11 @@ public class Shooter extends SubsystemBase {
         flywheelShooter.enableVoltageCompensation(11);
 
         flywheelMotorPIDController.setP(0.0003);
-        flywheelMotorPIDController.setFF(0.00003);
+        flywheelMotorPIDController.setFF(0.000175);
         flywheelMotorPIDController.setOutputRange(0,1);
     }
 
-    public void setSpeed(double velocity) {
+    public void setRPM(double velocity) {
         flywheelMotorPIDController.setReference(velocity, ControlType.kVelocity);
-
     }
 }
