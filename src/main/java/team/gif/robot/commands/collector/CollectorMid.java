@@ -4,10 +4,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import team.gif.robot.subsystems.Collector;
 
 public class CollectorMid extends CommandBase {
-
-    //@SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-    //private final ExampleSubsystem m_subsystem;
-
     /**
      * Creates a new ExampleCommand.
      *

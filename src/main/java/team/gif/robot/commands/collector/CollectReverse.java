@@ -5,9 +5,6 @@ import team.gif.robot.subsystems.Collector;
 import team.gif.robot.subsystems.Indexer;
 
 public class CollectReverse extends CommandBase {
-    //@SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-    //private final Collector m_collector;
-
     /**
      * Creates a new ExampleCommand.
      *
@@ -21,12 +18,9 @@ public class CollectReverse extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        new CollectorUp();
-        Collector.getInstance().setSpeed(-0.5);
+        Collector.getInstance().setSpeed(-0.6);
         Indexer.getInstance().setSpeedTwo(-0.5);
-        Indexer.getInstance().setSpeedThree(-0.5);
-        Indexer.getInstance().setSpeedFour(-0.5);
-        Indexer.getInstance().setSpeedFive(-0.5);
+        Indexer.getInstance().setSpeedThree(-0.4);
     }
 
     // Called every time the scheduler runs while the command is scheduled.
@@ -46,7 +40,5 @@ public class CollectReverse extends CommandBase {
         Collector.getInstance().setSpeed(0);
         Indexer.getInstance().setSpeedTwo(0);
         Indexer.getInstance().setSpeedThree(0);
-        Indexer.getInstance().setSpeedFour(0);
-        Indexer.getInstance().setSpeedFive(0);
     }
 }

@@ -68,11 +68,11 @@ public class OI {
          *
          */
 
-        //dLB.whenPressed(new CollectorDown());
+        dLB.whenPressed(new CollectorDown());
         dLB.whileHeld(new CollectCommand());
 
-        //dRB.whenPressed(new CollectorUp());
-        dRB.whileHeld(new CollectReverse());
+        dRB.whenPressed(new CollectorMid());
+        dRB.whenPressed(new CollectReverse().withTimeout(2));
 
         dDPadUp.whenPressed(new CollectorUp());
         dDPadLeft.whenPressed(new CollectorMid());
