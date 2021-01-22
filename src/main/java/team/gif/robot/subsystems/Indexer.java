@@ -1,7 +1,6 @@
 package team.gif.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -21,22 +20,29 @@ public class Indexer extends CommandBase {
     private static final VictorSPX motorStage4  = new VictorSPX(RobotMap.STAGE_FOUR);
     private static final VictorSPX motorStage5  = new VictorSPX(RobotMap.STAGE_FIVE);
 
+    private static final DigitalInput sensorStage1 = new DigitalInput(RobotMap.SENSOR_ONE);
+    private static final DigitalInput sensorStage2 = new DigitalInput(RobotMap.SENSOR_TWO);
+    private static final DigitalInput sensorStage3 = new DigitalInput(RobotMap.SENSOR_THREE);
+    private static final DigitalInput sensorStage4 = new DigitalInput(RobotMap.SENSOR_FOUR);
+    private static final DigitalInput sensorStage5 = new DigitalInput(RobotMap.SENSOR_FIVE);
+
+    public boolean[] getState() {
+        boolean[] sensorStates = {false, sensorStage1.get(), sensorStage2.get(), sensorStage3.get(), sensorStage4.get(), sensorStage5.get()};
+        return sensorStates;
+    }
+
     public void setSpeedTwo(double speed) {
     motorStage2.set(ControlMode.PercentOutput, speed);
     }
-
     public void setSpeedThree(double speed) {
         motorStage3.set(ControlMode.PercentOutput, speed);
     }
-
     public void setSpeedFour(double speed) {
         motorStage4.set(ControlMode.PercentOutput, speed);
     }
-
     public void setSpeedFive(double speed) {
         motorStage5.set(ControlMode.PercentOutput, speed);
     }
-
 
     private Indexer() {
         super();
