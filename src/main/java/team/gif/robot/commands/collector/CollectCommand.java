@@ -1,28 +1,30 @@
-package team.gif.robot.commands;
+package team.gif.robot.commands.collector;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import team.gif.robot.subsystems.Collector;
-import team.gif.robot.subsystems.ExampleSubsystem;
 
-public class CollectorUp extends CommandBase {
+/**
+ * An example command that uses an example subsystem.
+ */
+public class CollectCommand extends CommandBase {
     //@SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-    //private final ExampleSubsystem m_subsystem;
+    //private final Collector m_collector;
 
     /**
      * Creates a new ExampleCommand.
      *
-
+     //* @param subsystem The subsystem used by this command.
      */
-    public CollectorUp() {
-        //m_subsystem = subsystem;
+    public CollectCommand() {
         // Use addRequirements() here to declare subsystem dependencies.
-        //addRequirements(subsystem);
+        addRequirements(Collector.getInstance());
     }
 
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        Collector.getInstance().setSolenoids(false, false, true);
+        new CollectorDown();
+        Collector.getInstance().setSpeed(.5);
     }
 
     // Called every time the scheduler runs while the command is scheduled.
@@ -33,11 +35,13 @@ public class CollectorUp extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
+        Collector.getInstance().setSpeed(0);
     }
 }
+

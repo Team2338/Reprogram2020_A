@@ -1,4 +1,4 @@
-package team.gif.robot.commands;
+package team.gif.robot.commands.collector;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import team.gif.robot.subsystems.Collector;
@@ -22,7 +22,7 @@ public class CollectorMid extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-            Collector.getInstance().setSolenoids(false, true,false);
+            Collector.getInstance().setSolenoids(false, true, false);
     }
 
     // Called every time the scheduler runs while the command is scheduled.
