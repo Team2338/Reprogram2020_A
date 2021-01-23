@@ -1,6 +1,7 @@
 package team.gif.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -47,7 +48,13 @@ public class Indexer extends SubsystemBase {
 
     private Indexer() {
         super();
+
         motorStage4.setInverted(true);
-        motorStage4.
+
+        //Brake Methods
+        motorStage2.setNeutralMode(NeutralMode.Brake);
+        motorStage3.setNeutralMode(NeutralMode.Brake);
+        motorStage4.setNeutralMode( NeutralMode.Brake);
+        motorStage5.setNeutralMode( NeutralMode.Brake);
     }
 }
