@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import team.gif.lib.autoMode;
 import team.gif.robot.commands.autos.*;
 import team.gif.robot.commands.drivetrain.Drive;
+import team.gif.robot.commands.indexer.IndexIn;
 import team.gif.robot.subsystems.Drivetrain;
 import team.gif.robot.subsystems.drivers.Limelight;
 
@@ -26,6 +27,8 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand = null;
 
   private Command driveCommand = null;
+
+  private Command indexCommand = null;
 
   private SendableChooser<autoMode> autoModeChooser = new SendableChooser<>();
 
@@ -57,7 +60,8 @@ public class Robot extends TimedRobot {
 
     driveCommand = new Drive(Drivetrain.getInstance());
     drivetrain = Drivetrain.getInstance();
-
+    indexCommand = new IndexIn();
+    // indexCommand.schedule();
   }
 
   /**
