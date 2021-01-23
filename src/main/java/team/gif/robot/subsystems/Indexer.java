@@ -47,5 +47,7 @@ public class Indexer extends SubsystemBase {
 
     private Indexer() {
         super();
+        motorStage4.setInverted(true);
+        motorStage4.
     }
 }
