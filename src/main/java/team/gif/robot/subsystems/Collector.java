@@ -29,6 +29,8 @@ public class Collector extends SubsystemBase {
         super();
         collectorMotor.setInverted(true);
 
+        collectorMotor.setNeutralMode(NeutralMode.Brake);
+
     }
     // sets the speed of the motor using setSpeed Method
     public void setSpeed (double speed) {
