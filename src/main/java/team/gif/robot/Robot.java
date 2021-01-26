@@ -61,7 +61,7 @@ public class Robot extends TimedRobot {
     driveCommand = new Drive(Drivetrain.getInstance());
     drivetrain = Drivetrain.getInstance();
     indexCommand = new IndexIn();
-    // indexCommand.schedule();
+
   }
 
   /**
@@ -129,6 +129,7 @@ public class Robot extends TimedRobot {
     }
     oi = new OI();
     driveCommand.schedule();
+    indexCommand.schedule();
   }
 
   @Override

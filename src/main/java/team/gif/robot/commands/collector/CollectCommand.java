@@ -2,6 +2,7 @@ package team.gif.robot.commands.collector;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import team.gif.robot.subsystems.Collector;
+import team.gif.robot.subsystems.Indexer;
 
 /**
  * An example command that uses an example subsystem.
@@ -9,7 +10,7 @@ import team.gif.robot.subsystems.Collector;
 public class CollectCommand extends CommandBase {
     //@SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
     //private final Collector m_collector;
-
+    Indexer index = Indexer.getInstance();
     /**
      * Creates a new ExampleCommand.
      *
@@ -23,7 +24,9 @@ public class CollectCommand extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        Collector.getInstance().setSpeed(.5);
+        if(index.getState()[1] == false){
+            Collector.getInstance().setSpeed(.5);
+        }
     }
 
     // Called every time the scheduler runs while the command is scheduled.
@@ -34,7 +37,7 @@ public class CollectCommand extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return false;
+        return index.getState()[1];
     }
 
     // Called once the command ends or is interrupted.
