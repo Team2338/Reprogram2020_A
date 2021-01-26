@@ -1,9 +1,12 @@
 package team.gif.robot.subsystems;
 
 import com.revrobotics.*;
+import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import team.gif.robot.RobotMap;
 import edu.wpi.first.wpilibj.controller.PIDController;
+
+import static com.fasterxml.jackson.databind.deser.std.UntypedObjectDeserializer.Vanilla.std;
 
 
 public class Shooter extends SubsystemBase {
@@ -24,6 +27,7 @@ public class Shooter extends SubsystemBase {
         //need to adjust to remain safe
         flywheelShooter.restoreFactoryDefaults();
         flywheelShooter.enableVoltageCompensation(11);
+        flywheelShooter.setIdleMode(CANSparkMax.IdleMode.kCoast);
 
         flywheelMotorPIDController.setP(0.0003);
         flywheelMotorPIDController.setFF(0.000175);
