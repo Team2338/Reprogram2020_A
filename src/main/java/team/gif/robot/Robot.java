@@ -165,7 +165,7 @@ public class Robot extends TimedRobot {
   public void updateauto(){
 
     if(chosenAuto == autoMode.MOBILITY){
-        m_autonomousCommand = new Mobility();
+        m_autonomousCommand = new threeBallTrenchAuto();
     } else if(chosenAuto ==null) {
         System.out.println("Autonomous selection is null. Robot will do nothing in auto :(");
     }
