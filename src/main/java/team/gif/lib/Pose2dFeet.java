@@ -1,10 +1,7 @@
 package team.gif.lib;
 
-
 import edu.wpi.first.wpilibj.geometry.*;
 import edu.wpi.first.wpilibj.util.Units;
-
-
 
 /*                      0
  *   Forward            +x    Heading can be -180 to 180 or 0 to 359, either will work
