@@ -103,6 +103,7 @@ public class Robot extends TimedRobot {
       System.out.println("Auto: auto selection updated");
 
     m_autonomousCommand.schedule();
+    indexCommand.schedule();
 
     System.out.println("autonomous init end");
 
