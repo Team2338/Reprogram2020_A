@@ -4,6 +4,11 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import team.gif.lib.AxisButton;
+import team.gif.robot.commands.collector.*;
+import team.gif.robot.commands.indexer.StageFive;
+import team.gif.robot.commands.indexer.StageFour;
+import team.gif.robot.commands.indexer.StageThree;
+import team.gif.robot.commands.indexer.StageTwo;
 
 
 public class OI {
@@ -66,6 +71,26 @@ public class OI {
          * dRT.whileHeld(new EjectCommand());
          *
          */
+
+        dLB.whenPressed(new CollectorDown());
+        dLB.whileHeld(new CollectCommand());
+
+        dRB.whenPressed(new CollectorMid());
+        dRB.whenPressed(new CollectReverse().withTimeout(2));
+
+        dDPadUp.whenPressed(new CollectorUp());
+        dDPadLeft.whenPressed(new CollectorMid());
+        dDPadDown.whenPressed(new CollectorDown());
+
+        /*
+         *This is for the Indexer
+         *
+
+        dB.whenPressed(new StageTwo());
+        dA.whenPressed(new StageThree());
+        dX.whenPressed(new StageFour());
+        dY.whenPressed(new StageFive());
+        */
 
     }
 

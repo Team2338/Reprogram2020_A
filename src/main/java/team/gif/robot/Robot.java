@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import team.gif.lib.autoMode;
 import team.gif.robot.commands.autos.*;
 import team.gif.robot.commands.drivetrain.Drive;
+import team.gif.robot.commands.indexer.IndexIn;
 import team.gif.robot.subsystems.Drivetrain;
 import team.gif.robot.subsystems.drivers.Limelight;
 
@@ -26,6 +27,8 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand = null;
 
   private Command driveCommand = null;
+
+  private Command indexCommand = null;
 
   private SendableChooser<autoMode> autoModeChooser = new SendableChooser<>();
 
@@ -57,6 +60,7 @@ public class Robot extends TimedRobot {
 
     driveCommand = new Drive(Drivetrain.getInstance());
     drivetrain = Drivetrain.getInstance();
+    indexCommand = new IndexIn();
 
   }
 
@@ -99,6 +103,7 @@ public class Robot extends TimedRobot {
       System.out.println("Auto: auto selection updated");
 
     m_autonomousCommand.schedule();
+    indexCommand.schedule();
 
     System.out.println("autonomous init end");
 
@@ -125,6 +130,7 @@ public class Robot extends TimedRobot {
     }
     oi = new OI();
     driveCommand.schedule();
+    indexCommand.schedule();
   }
 
   @Override
@@ -152,8 +158,7 @@ public class Robot extends TimedRobot {
 
     autoTab = Shuffleboard.getTab("PreMatch");
 
-    autoModeChooser.addOption("Mobility", autoMode.MOBILITY);
-    autoModeChooser.setDefaultOption("6 Ball Auto", autoMode.MOBILITY);
+    autoModeChooser.setDefaultOption("Mobility", autoMode.MOBILITY);
 
     autoTab.add("Auto Select",autoModeChooser)
             .withWidget(BuiltInWidgets.kComboBoxChooser)

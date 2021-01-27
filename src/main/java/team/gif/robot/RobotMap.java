@@ -18,6 +18,14 @@ public abstract class RobotMap {
     public static final int HANGER = 11;
     public static final int COLOR_WHEEL = 12;
 
+    // Sensors
+    public static final int SENSOR_ONE = 1;
+    public static final int SENSOR_TWO = 2;
+    public static final int SENSOR_THREE = 3;
+    public static final int SENSOR_FOUR = 4;
+    public static final int SENSOR_FIVE = 5;
+    public static final int PRESSURE_SENSOR = 0;
+
     // Solenoids
     public static final int INTAKE_SOLENOID_ZERO = 0;
     public static final int INTAKE_SOLENOID_ONE = 1;
