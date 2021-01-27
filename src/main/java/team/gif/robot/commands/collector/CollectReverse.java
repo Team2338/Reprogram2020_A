@@ -5,11 +5,7 @@ import team.gif.robot.subsystems.Collector;
 import team.gif.robot.subsystems.Indexer;
 
 public class CollectReverse extends CommandBase {
-    /**
-     * Creates a new ExampleCommand.
-     *
-     //* @param subsystem The subsystem used by this command.
-     */
+
     public CollectReverse() {
         // Use addRequirements() here to declare subsystem dependencies.
         addRequirements(Collector.getInstance());

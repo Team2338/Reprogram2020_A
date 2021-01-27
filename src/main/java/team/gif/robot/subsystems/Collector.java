@@ -19,12 +19,13 @@ public class Collector extends SubsystemBase {
         }
         return instance;
     }
-    //defines motor object
+    // defines hardware object
     private static final VictorSPX collectorMotor= new VictorSPX(RobotMap.INTAKE);
     private static final Solenoid solenoid0 = new Solenoid(RobotMap.INTAKE_SOLENOID_ZERO);
     private static final Solenoid solenoid1 = new Solenoid(RobotMap.INTAKE_SOLENOID_ONE);
     private static final Solenoid solenoid2 = new Solenoid(RobotMap.INTAKE_SOLENOID_TWO);
-    //Collector constructor
+
+    // Collector constructor
     private Collector() {
         super();
         collectorMotor.setInverted(true);
@@ -32,6 +33,7 @@ public class Collector extends SubsystemBase {
         collectorMotor.setNeutralMode(NeutralMode.Brake);
 
     }
+
     // sets the speed of the motor using setSpeed Method
     public void setSpeed (double speed) {
         collectorMotor.set(ControlMode.PercentOutput, speed);

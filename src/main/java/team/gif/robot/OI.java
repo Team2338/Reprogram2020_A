@@ -84,12 +84,13 @@ public class OI {
 
         /*
          *This is for the Indexer
-         */
+         *
 
         dB.whenPressed(new StageTwo());
         dA.whenPressed(new StageThree());
         dX.whenPressed(new StageFour());
         dY.whenPressed(new StageFive());
+        */
 
     }
 

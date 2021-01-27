@@ -4,18 +4,9 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import team.gif.robot.subsystems.Collector;
 import team.gif.robot.subsystems.Indexer;
 
-/**
- * An example command that uses an example subsystem.
- */
 public class CollectCommand extends CommandBase {
-    //@SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-    //private final Collector m_collector;
     Indexer index = Indexer.getInstance();
-    /**
-     * Creates a new ExampleCommand.
-     *
-     //* @param subsystem The subsystem used by this command.
-     */
+
     public CollectCommand() {
         // Use addRequirements() here to declare subsystem dependencies.
         addRequirements(Collector.getInstance());

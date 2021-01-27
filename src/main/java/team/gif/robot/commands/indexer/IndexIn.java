@@ -25,9 +25,8 @@ public class IndexIn extends CommandBase{
         if(currentCommand != null && currentCommand.isFinished() == true) {
             currentCommand = null;
         }
-        //System.out.println("entering indexer");
+
         if(currentCommand == null) {
-            //System.out.println("                          Current Command Null");
             if((index.getState()[4] == true) && (index.getState()[5] == false)) {
                 currentCommand = new StageFive();
                 CommandScheduler.getInstance().schedule(currentCommand);
