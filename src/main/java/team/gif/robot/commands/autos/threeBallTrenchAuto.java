@@ -10,6 +10,9 @@ import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.RamseteCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import team.gif.lib.RobotTrajectory;
+import team.gif.robot.commands.collector.CollectCommand;
+import team.gif.robot.commands.collector.CollectorDown;
+import team.gif.robot.commands.collector.CollectorUp;
 import team.gif.robot.subsystems.Drivetrain;
 import java.util.List;
 
@@ -28,7 +31,7 @@ public class threeBallTrenchAuto extends SequentialCommandGroup {
         // Run path following command, then stop at the end.
         return rc.andThen(() -> Drivetrain.getInstance().tankDriveVolts(0, 0));
     }
-    
+
 
     public threeBallTrenchAuto() {
         System.out.println("Auto: threeBallTrenchAuto Selected");
@@ -36,7 +39,9 @@ public class threeBallTrenchAuto extends SequentialCommandGroup {
         addCommands(
                 new PrintCommand("Auto: threeBallTrenchAuto Started"),
                 reverse(),
-
+                new CollectorDown(),
+                new CollectCommand(),
+                new CollectorUp(),
                 //Shoot three balls.
 
                 new PrintCommand("Auto: threeBallTrenchAuto Ended")
