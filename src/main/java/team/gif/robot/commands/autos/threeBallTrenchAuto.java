@@ -5,10 +5,7 @@ import edu.wpi.first.wpilibj.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.trajectory.Trajectory;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.util.Units;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.PrintCommand;
-import edu.wpi.first.wpilibj2.command.RamseteCommand;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.*;
 import team.gif.lib.RobotTrajectory;
 import team.gif.robot.commands.collector.CollectCommand;
 import team.gif.robot.commands.collector.CollectorDown;
@@ -22,9 +19,9 @@ public class threeBallTrenchAuto extends SequentialCommandGroup {
         Trajectory trajectory = TrajectoryGenerator.generateTrajectory(
                 List.of(
                         new Pose2d(Units.feetToMeters(0.0), 0, new Rotation2d(0)),
-                        new Pose2d(Units.feetToMeters(-5.0), 0, new Rotation2d(0))
+                        new Pose2d(Units.feetToMeters(-17.0), 0, new Rotation2d(0))
                 ),
-                RobotTrajectory.getInstance().configReverse
+                RobotTrajectory.getInstance().configReverseSlow
         );
         // create the command using the trajectory
         RamseteCommand rc = RobotTrajectory.getInstance().createRamseteCommand(trajectory);
@@ -37,11 +34,12 @@ public class threeBallTrenchAuto extends SequentialCommandGroup {
         System.out.println("Auto: threeBallTrenchAuto Selected");
 
         addCommands(
-                new PrintCommand("Auto: threeBallTrenchAuto Started"),
+            new PrintCommand("Auto: threeBallTrenchAuto Started"),
+            new CollectorDown(),
+            new ParallelDeadlineGroup(
                 reverse(),
-                new CollectorDown(),
-                new CollectCommand(),
-                new CollectorUp(),
+                new CollectCommand()),
+
                 //Shoot three balls.
 
                 new PrintCommand("Auto: threeBallTrenchAuto Ended")

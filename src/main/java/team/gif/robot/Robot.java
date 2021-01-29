@@ -159,6 +159,7 @@ public class Robot extends TimedRobot {
     autoTab = Shuffleboard.getTab("PreMatch");
 
     autoModeChooser.setDefaultOption("Mobility", autoMode.MOBILITY);
+    autoModeChooser.addOption("threeBallTrenchAuto", autoMode.THREE_BALL_TRENCH);
 
     autoTab.add("Auto Select",autoModeChooser)
             .withWidget(BuiltInWidgets.kComboBoxChooser)
@@ -169,8 +170,10 @@ public class Robot extends TimedRobot {
 
   public void updateauto(){
 
-    if(chosenAuto == autoMode.MOBILITY){
-        m_autonomousCommand = new threeBallTrenchAuto();
+    if(chosenAuto == autoMode.MOBILITY) {
+        m_autonomousCommand = new Mobility();
+    }else if(chosenAuto == autoMode.THREE_BALL_TRENCH){
+            m_autonomousCommand = new threeBallTrenchAuto();
     } else if(chosenAuto ==null) {
         System.out.println("Autonomous selection is null. Robot will do nothing in auto :(");
     }
