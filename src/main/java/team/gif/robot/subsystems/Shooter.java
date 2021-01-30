@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj.controller.PIDController;
 
 
 public class Shooter extends SubsystemBase {
+    double velocityThreshold = 50;
+    double exactVelocity = 4000;
 
     private static Shooter instance = null;
 
@@ -19,11 +21,13 @@ public class Shooter extends SubsystemBase {
 
     private static final CANSparkMax flywheelShooter = new CANSparkMax(RobotMap.FLYWHEEL, CANSparkMaxLowLevel.MotorType.kBrushless);
     private static final CANPIDController flywheelMotorPIDController = flywheelShooter.getPIDController();
+    private static final CANEncoder flywheelShooterEncoder = flywheelShooter.getEncoder();
 
     private Shooter() {
         //need to adjust to remain safe
         flywheelShooter.restoreFactoryDefaults();
         flywheelShooter.enableVoltageCompensation(11);
+        flywheelShooter.setIdleMode(CANSparkMax.IdleMode.kCoast);
 
         flywheelMotorPIDController.setP(0.0003);
         flywheelMotorPIDController.setFF(0.000175);
@@ -32,5 +36,9 @@ public class Shooter extends SubsystemBase {
 
     public void setRPM(double velocity) {
         flywheelMotorPIDController.setReference(velocity, ControlType.kVelocity);
+    }
+
+    public double getShooterVelocity() {
+        return flywheelShooterEncoder.getVelocity();
     }
 }
