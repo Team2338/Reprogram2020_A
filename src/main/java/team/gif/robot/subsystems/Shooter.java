@@ -23,15 +23,22 @@ public class Shooter extends SubsystemBase {
     private static final CANPIDController flywheelMotorPIDController = flywheelShooter.getPIDController();
     private static final CANEncoder flywheelShooterEncoder = flywheelShooter.getEncoder();
 
+    int stallMaxAmps = 40;
+
     private Shooter() {
-        //need to adjust to remain safe
         flywheelShooter.restoreFactoryDefaults();
-        flywheelShooter.enableVoltageCompensation(11);
+        flywheelShooter.enableVoltageCompensation(12);
+        flywheelShooter.setInverted(false);
         flywheelShooter.setIdleMode(CANSparkMax.IdleMode.kCoast);
 
         flywheelMotorPIDController.setP(0.0003);
         flywheelMotorPIDController.setFF(0.000175);
         flywheelMotorPIDController.setOutputRange(0,1);
+
+        flywheelShooter.setSmartCurrentLimit(stallMaxAmps, stallMaxAmps);
+    }
+    public void setVoltage(double voltage) {
+        flywheelShooter.setVoltage(voltage);
     }
 
     public void setRPM(double velocity) {
