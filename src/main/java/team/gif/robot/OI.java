@@ -74,7 +74,7 @@ public class OI {
          *
          */
         dLT.whileHeld(new shooterCommand());
-        dLT.whileHeld(new indexerPushShooter());
+        dRT.whileHeld(new indexerPushShooter());
 
         dLB.whenPressed(new CollectorDown());
         dLB.whileHeld(new CollectCommand());
