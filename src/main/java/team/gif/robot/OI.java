@@ -10,6 +10,7 @@ import team.gif.robot.commands.indexer.StageFive;
 import team.gif.robot.commands.indexer.StageFour;
 import team.gif.robot.commands.indexer.StageThree;
 import team.gif.robot.commands.indexer.StageTwo;
+import team.gif.robot.commands.shooter.indexerPushShooter;
 
 
 public class OI {
@@ -73,6 +74,7 @@ public class OI {
          *
          */
         dLT.whileHeld(new shooterCommand());
+        dLT.whileHeld(new indexerPushShooter());
 
         dLB.whenPressed(new CollectorDown());
         dLB.whileHeld(new CollectCommand());
