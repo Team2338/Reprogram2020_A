@@ -19,21 +19,27 @@ public class limelightCommand extends CommandBase {
 
   double tx;
   double txThreshold = 0.2;
+  boolean targetLocked;
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     limelight.setLEDMode(3);
+    targetLocked = false;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    tx = limelight.getXOffset();
-    double constant = 5;
-    double lPower = tx * constant;
-    double rPower = -lPower;
-    Drivetrain.getInstance().setSpeed(lPower, rPower);
+    targetLocked = limelight.hasTarget();
+    if(targetLocked == true) {
+      tx = limelight.getXOffset();
+      double constant = 5;
+      double lPower = tx * constant;
+      double rPower = -lPower;
+      Drivetrain.getInstance().setSpeed(lPower, rPower);
+
+    }
 
   }
 
