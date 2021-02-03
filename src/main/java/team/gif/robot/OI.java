@@ -6,10 +6,7 @@ import edu.wpi.first.wpilibj2.command.button.POVButton;
 import team.gif.lib.AxisButton;
 import team.gif.robot.commands.shooter.shooterCommand;
 import team.gif.robot.commands.collector.*;
-import team.gif.robot.commands.indexer.StageFive;
-import team.gif.robot.commands.indexer.StageFour;
-import team.gif.robot.commands.indexer.StageThree;
-import team.gif.robot.commands.indexer.StageTwo;
+import team.gif.robot.commands.shooter.IndexerPushShooter;
 
 
 public class OI {
@@ -73,6 +70,7 @@ public class OI {
          *
          */
         dLT.whileHeld(new shooterCommand());
+        dRT.whileHeld(new IndexerPushShooter());
 
         dLB.whenPressed(new CollectorDown());
         dLB.whileHeld(new CollectCommand());
