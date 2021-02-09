@@ -72,11 +72,9 @@ public class OI {
          * dRT.whileHeld(new EjectCommand());
          *
          */
-        dLT.whileHeld(new shooterCommand());
+        dLT.whileHeld(new ShooterCommand());
         dRT.whileHeld(new IndexerPushShooter());
         dA.whenPressed(new limelightCommand());
-        dB.whenPressed(new AutoAim());
-        aLT.whileHeld(new IndexerPushShooterContinuous());
 
         dLB.whenPressed(new CollectorDown());
         dLB.whileHeld(new CollectCommand());
