@@ -29,13 +29,13 @@ public class IndexerPushShooterContinuous extends CommandBase {
         if(Indexer.getInstance().getState()[3] == true){
           if(Indexer.getInstance().getState()[2] == true){
             if(Indexer.getInstance().getState()[1] == true){
-              Collector.getInstance().setSpeed(0.5);
+              Collector.getInstance().setSpeed(0.2);
             }
-            Indexer.getInstance().setSpeedTwo(0.5);
+            Indexer.getInstance().setSpeedTwo(0.25);
           }
-          Indexer.getInstance().setSpeedThree(0.5);
+          Indexer.getInstance().setSpeedThree(0.3);
         }
-        Indexer.getInstance().setSpeedFour(0.5);
+        Indexer.getInstance().setSpeedFour(0.4);
       }
       Indexer.getInstance().setSpeedFive(0.5);
     }
