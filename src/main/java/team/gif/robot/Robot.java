@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import team.gif.lib.autoMode;
@@ -15,6 +16,7 @@ import team.gif.robot.commands.drivetrain.Drive;
 import team.gif.robot.commands.indexer.IndexIn;
 import team.gif.robot.subsystems.Drivetrain;
 import team.gif.robot.subsystems.drivers.Limelight;
+import team.gif.robot.subsystems.Shooter;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -73,7 +75,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-
+    SmartDashboard.putString("RPM", Shooter.getInstance().RPM_to_Shuffleboard());
     chosenAuto = autoModeChooser.getSelected();
 
     CommandScheduler.getInstance().run();
