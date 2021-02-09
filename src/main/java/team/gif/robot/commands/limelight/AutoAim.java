@@ -11,10 +11,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
 import team.gif.robot.commands.shooter.IndexerPushShooterContinuous;
 import team.gif.robot.subsystems.Shooter;
-import team.gif.robot.subsystems.drivers.Pigeon;
-import team.gif.robot.subsystems.drivers.Limelight;
-import team.gif.robot.commands.shooter.IndexerPushShooter;
-import team.gif.robot.commands.shooter.shooterCommand;
+import team.gif.robot.commands.shooter.ShooterCommand;
 import team.gif.robot.subsystems.Drivetrain;
 import static team.gif.robot.Robot.limelight;
 
@@ -61,7 +58,7 @@ public class AutoAim extends CommandBase {
         ty = limelight.getYOffset();
         //Numerator assumes that the camera is mounted 1 foot from the ground; Calculated by height from carpet to tall target - carpet to camera
         Distance = 86.25 / tanOverflowPrevent;
-        new shooterCommand();
+        new ShooterCommand();
         new IndexerPushShooterContinuous();
       }
       System.out.println(Distance);
