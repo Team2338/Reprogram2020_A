@@ -17,6 +17,8 @@ public class CollectCommand extends CommandBase {
     public void initialize() {
         if(index.getState()[1] == false){
             Collector.getInstance().setSpeed(.5);
+        } else {
+            Collector.getInstance().setSpeed(0);
         }
     }
 
