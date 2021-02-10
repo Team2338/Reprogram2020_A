@@ -9,28 +9,29 @@ public class CollectCommand extends CommandBase {
 
     public CollectCommand() {
         // Use addRequirements() here to declare subsystem dependencies.
-        addRequirements(Collector.getInstance());
+        //addRequirements(Collector.getInstance());
     }
 
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        if(index.getState()[1] == false){
-            Collector.getInstance().setSpeed(.5);
-        } else {
-            Collector.getInstance().setSpeed(0);
-        }
+
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
+        if(index.getState()[1] == false){
+            Collector.getInstance().setSpeed(.5);
+        }else{
+            Collector.getInstance().setSpeed(0);
+        }
     }
 
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return index.getState()[1];
+        return false;
     }
 
     // Called once the command ends or is interrupted.
