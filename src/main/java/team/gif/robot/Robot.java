@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import team.gif.lib.autoMode;
@@ -14,6 +15,8 @@ import team.gif.robot.commands.autos.*;
 import team.gif.robot.commands.drivetrain.Drive;
 import team.gif.robot.commands.indexer.IndexIn;
 import team.gif.robot.subsystems.Drivetrain;
+import team.gif.robot.subsystems.Indexer;
+import team.gif.robot.subsystems.Shooter;
 import team.gif.robot.subsystems.drivers.Limelight;
 
 /**
@@ -75,6 +78,21 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
 
     chosenAuto = autoModeChooser.getSelected();
+
+    //System.out.println("robot periodic");
+
+    SmartDashboard.putBoolean("One",  Indexer.getInstance(). getState()[1]);
+    SmartDashboard.putBoolean("Two",  Indexer.getInstance(). getState()[2]);
+    SmartDashboard.putBoolean("Three",Indexer.getInstance().getState()[3]);
+    SmartDashboard.putBoolean("Four", Indexer.getInstance().getState()[4]);
+    SmartDashboard.putBoolean("Five", Indexer.getInstance().getState()[5]);
+
+//    SmartDashboard.putNumber("tx",limelight.getXOffset());
+//    SmartDashboard.putNumber("ty",limelight.getYOffset());
+
+
+//    SmartDashboard.putBoolean("hastarget",limelight.hasTarget());
+    CommandScheduler.getInstance().run();
 
     CommandScheduler.getInstance().run();
 
