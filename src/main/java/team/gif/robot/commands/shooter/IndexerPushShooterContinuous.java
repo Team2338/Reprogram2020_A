@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import team.gif.robot.subsystems.Indexer;
 import team.gif.robot.subsystems.Shooter;
 import team.gif.robot.subsystems.Collector;
+import team.gif.robot.Globals;
 
 /**
  * An example command that uses an example subsystem.
@@ -19,31 +20,26 @@ public class IndexerPushShooterContinuous extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+      Globals.isIndexerEnabled = false;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(Shooter.getInstance().getShooterVelocity() >= 3950 && Shooter.getInstance().getShooterVelocity() <= 4050 && Indexer.getInstance().getState()[5] == true) {
-      if(Indexer.getInstance().getState()[4] == true){
-        if(Indexer.getInstance().getState()[3] == true){
-          if(Indexer.getInstance().getState()[2] == true){
-            if(Indexer.getInstance().getState()[1] == true){
-              Collector.getInstance().setSpeed(0.2);
-            }
-            Indexer.getInstance().setSpeedTwo(0.25);
-          }
-          Indexer.getInstance().setSpeedThree(0.3);
-        }
-        Indexer.getInstance().setSpeedFour(0.4);
-      }
-      Indexer.getInstance().setSpeedFive(0.5);
+    if(Shooter.getInstance().getShooterVelocity() >= 3800) {
+      Collector.getInstance().setSpeed(0.4);
+      Indexer.getInstance().setSpeedTwo(0.4);
+      Indexer.getInstance().setSpeedThree(0.4);
+      Indexer.getInstance().setSpeedFour(0.5);
+      Indexer.getInstance().setSpeedFive(0.6);
     }
     else{
+      Collector.getInstance().setSpeed(0);
       Indexer.getInstance().setSpeedFive(0);
       Indexer.getInstance().setSpeedFour(0);
       Indexer.getInstance().setSpeedThree(0);
       Indexer.getInstance().setSpeedTwo(0);
+      System.out.println(Shooter.getInstance().getShooterVelocity());
     }
   }
 
@@ -61,5 +57,6 @@ public class IndexerPushShooterContinuous extends CommandBase {
     Indexer.getInstance().setSpeedThree(0);
     Indexer.getInstance().setSpeedTwo(0);
     Collector.getInstance().setSpeed(0);
+    Globals.isIndexerEnabled = true;
   }
 }

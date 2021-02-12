@@ -32,7 +32,7 @@ public class ShooterCommand extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        Shooter.getInstance().setRPM(4000);
+        Shooter.getInstance().setRPM(4300);
     }
 
     // Called every time the scheduler runs while the command is scheduled.
