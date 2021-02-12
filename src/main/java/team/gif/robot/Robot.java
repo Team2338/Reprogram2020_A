@@ -7,14 +7,17 @@ import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import team.gif.lib.autoMode;
+import team.gif.robot.commands.ResetDirection;
 import team.gif.robot.commands.autos.*;
 import team.gif.robot.commands.drivetrain.Drive;
 import team.gif.robot.commands.indexer.IndexIn;
 import team.gif.robot.subsystems.Drivetrain;
 import team.gif.robot.subsystems.drivers.Limelight;
+import team.gif.robot.subsystems.drivers.Pigeon;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -35,6 +38,7 @@ public class Robot extends TimedRobot {
   private autoMode chosenAuto;
 
 
+
   public static Limelight limelight;
 
   public static ShuffleboardTab autoTab = Shuffleboard.getTab("PreMatch");
@@ -42,7 +46,12 @@ public class Robot extends TimedRobot {
                                                     .withPosition(3,0)
                                                     .withSize(1,1)
                                                     .getEntry();
-
+  /*
+  private NetworkTableEntry resetPigeonYaw = Shuffleboard.getTab("Reset Pigeon")
+                                                    .add("Reset Pigeon" ,false)
+                                                    .withWidget("Toggle Button")
+                                                    .getEntry();
+  */
   public static OI oi;
   private Drivetrain drivetrain = null;
 
@@ -62,6 +71,8 @@ public class Robot extends TimedRobot {
     drivetrain = Drivetrain.getInstance();
     indexCommand = new IndexIn();
 
+    SmartDashboard.putData("Reset Yaw", new ResetDirection());
+
   }
 
   /**
@@ -77,7 +88,10 @@ public class Robot extends TimedRobot {
     chosenAuto = autoModeChooser.getSelected();
 
     CommandScheduler.getInstance().run();
-
+  /*
+    ShuffleboardTab resetYaw = Shuffleboard.getTab("Reset Pigeon");
+    if (resetYaw.equals(true)) { Pigeon.getInstance().resetPigeonPosition(); }
+  */
   }
 
   /**
@@ -131,19 +145,24 @@ public class Robot extends TimedRobot {
     oi = new OI();
     driveCommand.schedule();
     indexCommand.schedule();
+
+
   }
 
   @Override
   public void teleopPeriodic() {
 
+
   }
 
   @Override
   public void testInit() {
+
   }
 
   @Override
   public void testPeriodic() {
+
   }
 
   @Override
@@ -165,7 +184,15 @@ public class Robot extends TimedRobot {
             .withPosition(1,0)
             .withSize(2,1);
 
-  }
+
+
+
+
+
+
+    }
+
+
 
   public void updateauto(){
 
