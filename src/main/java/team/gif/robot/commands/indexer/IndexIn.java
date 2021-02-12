@@ -2,6 +2,7 @@ package team.gif.robot.commands.indexer;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import team.gif.robot.Globals;
 import team.gif.robot.subsystems.Indexer;
 
 public class IndexIn extends CommandBase{
@@ -17,6 +18,7 @@ public class IndexIn extends CommandBase{
     @Override
     public void initialize() {
         currentCommand = null;
+        Globals.isIndexerEnabled = true;
     }
 
     // Called every time the scheduler runs while the command is scheduled.
@@ -26,7 +28,7 @@ public class IndexIn extends CommandBase{
             currentCommand = null;
         }
 
-        if(currentCommand == null) {
+        if(currentCommand == null && Globals.isIndexerEnabled) {
             if((index.getState()[4] == true) && (index.getState()[5] == false)) {
                 currentCommand = new StageFive();
                 CommandScheduler.getInstance().schedule(currentCommand);

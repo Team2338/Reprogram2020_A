@@ -4,9 +4,12 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import team.gif.lib.AxisButton;
-import team.gif.robot.commands.shooter.shooterCommand;
+import team.gif.robot.commands.limelight.LimelightCommand;
+import team.gif.robot.commands.shooter.IndexerPushShooterContinuous;
+import team.gif.robot.commands.shooter.ShooterCommand;
 import team.gif.robot.commands.collector.*;
 import team.gif.robot.commands.shooter.IndexerPushShooter;
+import team.gif.robot.commands.limelight.AutoAim;
 
 
 public class OI {
@@ -69,8 +72,9 @@ public class OI {
          * dRT.whileHeld(new EjectCommand());
          *
          */
-        dLT.whileHeld(new shooterCommand());
-        dRT.whileHeld(new IndexerPushShooter());
+        dLT.whileHeld(new ShooterCommand());
+        dRT.whileHeld(new IndexerPushShooterContinuous());
+        //dA.whenPressed(new limelightCommand());
 
         dLB.whenPressed(new CollectorDown());
         dLB.whileHeld(new CollectCommand());

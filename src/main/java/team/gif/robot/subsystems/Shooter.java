@@ -48,4 +48,8 @@ public class Shooter extends SubsystemBase {
     public double getShooterVelocity() {
         return flywheelShooterEncoder.getVelocity();
     }
+
+    public String RPM_to_Shuffleboard(){
+        return String.format("%12.0f", getShooterVelocity());
+    }
 }

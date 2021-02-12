@@ -15,7 +15,7 @@ import team.gif.robot.subsystems.Shooter;
 /**
  * An example command that uses an example subsystem.
  */
-public class shooterCommand extends CommandBase {
+public class ShooterCommand extends CommandBase {
     @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
 
 
@@ -24,7 +24,7 @@ public class shooterCommand extends CommandBase {
      *
      * @param subsystem The subsystem used by this command.
      */
-    public shooterCommand() {
+    public ShooterCommand() {
         // Use addRequirements() here to declare subsystem dependencies.
         addRequirements(Shooter.getInstance());
     }
@@ -32,7 +32,7 @@ public class shooterCommand extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        Shooter.getInstance().setRPM(4000);
+        Shooter.getInstance().setRPM(4300);
     }
 
     // Called every time the scheduler runs while the command is scheduled.
