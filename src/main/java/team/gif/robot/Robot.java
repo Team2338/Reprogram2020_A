@@ -94,7 +94,7 @@ public class Robot extends TimedRobot {
 //    SmartDashboard.putBoolean("hastarget",limelight.hasTarget());
     CommandScheduler.getInstance().run();
 
-    CommandScheduler.getInstance().run();
+
 
   }
 
