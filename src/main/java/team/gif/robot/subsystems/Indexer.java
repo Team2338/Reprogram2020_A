@@ -39,7 +39,9 @@ public class Indexer extends SubsystemBase {
     public void setSpeedThree(double speed) {
         motorStage3.set(ControlMode.PercentOutput, speed);
     }
-    public void setSpeedFour(double speed) { motorStage4.set(ControlMode.PercentOutput, speed); }
+    public void setSpeedFour(double speed) {
+        motorStage4.set(ControlMode.PercentOutput, speed);
+    }
     public void setSpeedFive(double speed) {
         motorStage5.set(ControlMode.PercentOutput, speed);
     }
