@@ -34,7 +34,7 @@ public class FiveBallTrenchAuto extends SequentialCommandGroup {
         Trajectory trajectory = TrajectoryGenerator.generateTrajectory(
                 List.of(
                         new Pose2dFeet().set(-10.6, 0.0, 0.0),
-                        new Pose2dFeet().set(7.0, 0.0, 0.0)
+                        new Pose2dFeet().set(-3.0, 0.0, 0.0)
                 ),
                 RobotTrajectory.getInstance().configForward
         );
@@ -54,7 +54,7 @@ public class FiveBallTrenchAuto extends SequentialCommandGroup {
             new ParallelDeadlineGroup(
                 reverse(),
                 new CollectCommand()),
-                forward(),
+            forward(),
 
                 //Shoot three balls.
 
