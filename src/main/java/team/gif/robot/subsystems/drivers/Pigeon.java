@@ -37,6 +37,7 @@ public class Pigeon {
     }
 
 
+
     /**
      * Returns heading from pigeon
      *      turning counterclockwise, values increase
