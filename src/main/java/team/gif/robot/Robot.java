@@ -15,9 +15,14 @@ import team.gif.robot.commands.ResetDirection;
 import team.gif.robot.commands.autos.*;
 import team.gif.robot.commands.drivetrain.Drive;
 import team.gif.robot.commands.indexer.IndexIn;
+import team.gif.robot.commands.indexer.ToggleIndexer;
 import team.gif.robot.subsystems.Drivetrain;
+import team.gif.robot.subsystems.Indexer;
+import team.gif.robot.subsystems.Shooter;
 import team.gif.robot.subsystems.drivers.Limelight;
 import team.gif.robot.subsystems.drivers.Pigeon;
+
+import static team.gif.robot.Globals.indexerEnabled;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -82,7 +87,24 @@ public class Robot extends TimedRobot {
 
     chosenAuto = autoModeChooser.getSelected();
 
+    //System.out.println("robot periodic");
+
+    SmartDashboard.putBoolean("One",  Indexer.getInstance(). getState()[1]);
+    SmartDashboard.putBoolean("Two",  Indexer.getInstance(). getState()[2]);
+    SmartDashboard.putBoolean("Three",Indexer.getInstance().getState()[3]);
+    SmartDashboard.putBoolean("Four", Indexer.getInstance().getState()[4]);
+    SmartDashboard.putBoolean("Five", Indexer.getInstance().getState()[5]);
+
+    SmartDashboard.putBoolean("Indexer enabled", Globals.indexerEnabled);
+
+//    SmartDashboard.putNumber("tx",limelight.getXOffset());
+//    SmartDashboard.putNumber("ty",limelight.getYOffset());
+
+
+//    SmartDashboard.putBoolean("hastarget",limelight.hasTarget());
     CommandScheduler.getInstance().run();
+
+
 
   }
 
