@@ -46,12 +46,7 @@ public class Robot extends TimedRobot {
                                                     .withPosition(3,0)
                                                     .withSize(1,1)
                                                     .getEntry();
-  /*
-  private NetworkTableEntry resetPigeonYaw = Shuffleboard.getTab("Reset Pigeon")
-                                                    .add("Reset Pigeon" ,false)
-                                                    .withWidget("Toggle Button")
-                                                    .getEntry();
-  */
+
   public static OI oi;
   private Drivetrain drivetrain = null;
 
@@ -88,10 +83,7 @@ public class Robot extends TimedRobot {
     chosenAuto = autoModeChooser.getSelected();
 
     CommandScheduler.getInstance().run();
-  /*
-    ShuffleboardTab resetYaw = Shuffleboard.getTab("Reset Pigeon");
-    if (resetYaw.equals(true)) { Pigeon.getInstance().resetPigeonPosition(); }
-  */
+
   }
 
   /**
@@ -145,8 +137,6 @@ public class Robot extends TimedRobot {
     oi = new OI();
     driveCommand.schedule();
     indexCommand.schedule();
-
-
   }
 
   @Override
@@ -183,13 +173,6 @@ public class Robot extends TimedRobot {
             .withWidget(BuiltInWidgets.kComboBoxChooser)
             .withPosition(1,0)
             .withSize(2,1);
-
-
-
-
-
-
-
     }
 
 
