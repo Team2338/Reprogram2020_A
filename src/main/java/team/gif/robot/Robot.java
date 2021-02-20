@@ -2,6 +2,7 @@
 package team.gif.robot;
 
 import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
@@ -128,14 +129,18 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-    oi = new OI();
+    oi.Vibration(false);
     driveCommand.schedule();
     indexCommand.schedule();
   }
 
   @Override
   public void teleopPeriodic() {
-
+    oi = new OI();
+    double currMatchTime = DriverStation.getInstance().getMatchTime();
+    if (currMatchTime >= 19.0 && currMatchTime <= 21.0) {
+      oi.Vibration(true);
+    }
   }
 
   @Override
