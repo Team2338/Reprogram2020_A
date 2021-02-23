@@ -8,14 +8,22 @@ import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import team.gif.lib.autoMode;
+import team.gif.robot.commands.ResetDirection;
 import team.gif.robot.commands.autos.*;
 import team.gif.robot.commands.drivetrain.Drive;
 import team.gif.robot.commands.indexer.IndexIn;
+import team.gif.robot.commands.indexer.ToggleIndexer;
 import team.gif.robot.subsystems.Drivetrain;
+import team.gif.robot.subsystems.Indexer;
+import team.gif.robot.subsystems.Shooter;
 import team.gif.robot.subsystems.drivers.Limelight;
+import team.gif.robot.subsystems.drivers.Pigeon;
+
+import static team.gif.robot.Globals.indexerEnabled;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -34,6 +42,7 @@ public class Robot extends TimedRobot {
   private SendableChooser<autoMode> autoModeChooser = new SendableChooser<>();
 
   private autoMode chosenAuto;
+
 
 
   public static Limelight limelight;
@@ -63,6 +72,8 @@ public class Robot extends TimedRobot {
     drivetrain = Drivetrain.getInstance();
     indexCommand = new IndexIn();
 
+    SmartDashboard.putData("Reset Yaw", new ResetDirection());
+
   }
 
   /**
@@ -77,7 +88,24 @@ public class Robot extends TimedRobot {
 
     chosenAuto = autoModeChooser.getSelected();
 
+    //System.out.println("robot periodic");
+
+    SmartDashboard.putBoolean("One",  Indexer.getInstance(). getState()[1]);
+    SmartDashboard.putBoolean("Two",  Indexer.getInstance(). getState()[2]);
+    SmartDashboard.putBoolean("Three",Indexer.getInstance().getState()[3]);
+    SmartDashboard.putBoolean("Four", Indexer.getInstance().getState()[4]);
+    SmartDashboard.putBoolean("Five", Indexer.getInstance().getState()[5]);
+
+    SmartDashboard.putBoolean("Indexer enabled", Globals.indexerEnabled);
+
+//    SmartDashboard.putNumber("tx",limelight.getXOffset());
+//    SmartDashboard.putNumber("ty",limelight.getYOffset());
+
+
+//    SmartDashboard.putBoolean("hastarget",limelight.hasTarget());
     CommandScheduler.getInstance().run();
+
+
 
   }
 
@@ -142,10 +170,12 @@ public class Robot extends TimedRobot {
 
   @Override
   public void testInit() {
+
   }
 
   @Override
   public void testPeriodic() {
+
   }
 
   @Override
@@ -166,8 +196,9 @@ public class Robot extends TimedRobot {
             .withWidget(BuiltInWidgets.kComboBoxChooser)
             .withPosition(1,0)
             .withSize(2,1);
+    }
 
-  }
+
 
   public void updateauto(){
 

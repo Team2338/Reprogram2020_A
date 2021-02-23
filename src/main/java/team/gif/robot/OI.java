@@ -2,9 +2,11 @@ package team.gif.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import team.gif.lib.AxisButton;
+import team.gif.robot.commands.indexer.ToggleIndexer;
 import team.gif.robot.commands.shooter.shooterCommand;
 import team.gif.robot.commands.collector.*;
 import team.gif.robot.commands.shooter.IndexerPushShooter;
@@ -75,7 +77,7 @@ public class OI {
 
         dLB.whenPressed(new CollectorDown());
         dLB.whileHeld(new CollectCommand());
-
+        dY.toggleWhenActive(new ToggleIndexer());
         dRB.whenPressed(new CollectorMid());
         dRB.whenPressed(new CollectReverse().withTimeout(2));
 
