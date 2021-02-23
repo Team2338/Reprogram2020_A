@@ -127,23 +127,17 @@ public class Robot extends TimedRobot {
     // continue until interrupted by another command, remove
     // this line or comment it out.
     if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
+        m_autonomousCommand.cancel();
     }
-    oi.Vibration(false);
+    oi = new OI();
     driveCommand.schedule();
     indexCommand.schedule();
   }
 
   @Override
   public void teleopPeriodic() {
-    //oi = new OI();
     double currMatchTime = DriverStation.getInstance().getMatchTime();
-    if (currMatchTime >= 19.0 && currMatchTime <= 21.0) {
-      oi.Vibration(true);
-    }
-    else{
-      oi.Vibration(false);
-    }
+    oi.Vibration(currMatchTime >= 19.0 && currMatchTime <= 21.0);
   }
 
   @Override

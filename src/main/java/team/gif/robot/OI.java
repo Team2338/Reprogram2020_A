@@ -95,7 +95,7 @@ public class OI {
 
         }
     public void Vibration(boolean rumble) {
-        if(rumble == true) {
+        if(rumble){
             driver.setRumble(GenericHID.RumbleType.kLeftRumble, 1);
             driver.setRumble(GenericHID.RumbleType.kRightRumble, 1);
             aux.setRumble(GenericHID.RumbleType.kLeftRumble, 1);
