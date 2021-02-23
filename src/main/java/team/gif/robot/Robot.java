@@ -17,7 +17,6 @@ import team.gif.robot.commands.drivetrain.Drive;
 import team.gif.robot.commands.indexer.IndexIn;
 import team.gif.robot.subsystems.Drivetrain;
 import team.gif.robot.subsystems.drivers.Limelight;
-import team.gif.robot.subsystems.drivers.Pigeon;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -177,7 +176,7 @@ public class Robot extends TimedRobot {
 
     autoTab = Shuffleboard.getTab("PreMatch");
 
-    autoModeChooser.setDefaultOption("Mobility", autoMode.MOBILITY);
+    autoModeChooser.setDefaultOption("Mobility", autoMode.MOBILITY_FWD);
 
     autoTab.add("Auto Select",autoModeChooser)
             .withWidget(BuiltInWidgets.kComboBoxChooser)
@@ -196,8 +195,8 @@ public class Robot extends TimedRobot {
 
   public void updateauto(){
 
-    if(chosenAuto == autoMode.MOBILITY){
-        m_autonomousCommand = new Mobility();
+    if(chosenAuto == autoMode.MOBILITY_FWD){
+        m_autonomousCommand = new MobilityFwd();
     } else if(chosenAuto ==null) {
         System.out.println("Autonomous selection is null. Robot will do nothing in auto :(");
     }
