@@ -136,10 +136,13 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    oi = new OI();
+    //oi = new OI();
     double currMatchTime = DriverStation.getInstance().getMatchTime();
     if (currMatchTime >= 19.0 && currMatchTime <= 21.0) {
       oi.Vibration(true);
+    }
+    else{
+      oi.Vibration(false);
     }
   }
 
