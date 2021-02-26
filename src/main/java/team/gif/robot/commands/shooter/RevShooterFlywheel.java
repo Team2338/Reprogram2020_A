@@ -15,7 +15,7 @@ import team.gif.robot.subsystems.Shooter;
 /**
  * An example command that uses an example subsystem.
  */
-public class RevShooter extends CommandBase {
+public class RevShooterFlywheel extends CommandBase {
     @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
 
 
@@ -24,7 +24,7 @@ public class RevShooter extends CommandBase {
      *
      * @param subsystem The subsystem used by this command.
      */
-    public RevShooter() {
+    public RevShooterFlywheel() {
         // Use addRequirements() here to declare subsystem dependencies.
         addRequirements(Shooter.getInstance());
     }
