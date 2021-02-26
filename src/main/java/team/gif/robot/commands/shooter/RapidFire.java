@@ -16,7 +16,7 @@ import team.gif.robot.Globals;
 /**
  * An example command that uses an example subsystem.
  */
-public class IndexerPushShooterContinuous extends CommandBase {
+public class RapidFire extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {

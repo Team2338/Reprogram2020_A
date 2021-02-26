@@ -9,7 +9,7 @@ package team.gif.robot.commands.limelight;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
-import team.gif.robot.commands.shooter.IndexerPushShooterContinuous;
+import team.gif.robot.commands.shooter.RapidFire;
 import team.gif.robot.subsystems.Shooter;
 import team.gif.robot.commands.shooter.ShooterCommand;
 import team.gif.robot.subsystems.Drivetrain;
@@ -59,7 +59,7 @@ public class AutoAim extends CommandBase {
         //Numerator assumes that the camera is mounted 1 foot from the ground; Calculated by height from carpet to tall target - carpet to camera
         Distance = 86.25 / tanOverflowPrevent;
         new ShooterCommand();
-        new IndexerPushShooterContinuous();
+        new RapidFire();
       }
       System.out.println(Distance);
     }
