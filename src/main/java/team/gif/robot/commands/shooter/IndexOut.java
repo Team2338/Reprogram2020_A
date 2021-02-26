@@ -14,7 +14,7 @@ import team.gif.robot.subsystems.Indexer;
 /**
  * An example command that uses an example subsystem.
  */
-public class IndexerPushShooter extends CommandBase {
+public class IndexOut extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {

@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import team.gif.lib.AxisButton;
 import team.gif.robot.commands.shooter.RapidFire;
-import team.gif.robot.commands.shooter.ShooterCommand;
+import team.gif.robot.commands.shooter.RevShooterFlywheel;
 import team.gif.robot.commands.collector.*;
 
 
@@ -69,7 +69,7 @@ public class OI {
          * dRT.whileHeld(new EjectCommand());
          *
          */
-        dLT.whileHeld(new ShooterCommand());
+        dLT.whileHeld(new RevShooterFlywheel());
         dRT.whileHeld(new RapidFire());
         //dA.whenPressed(new limelightCommand());
 
