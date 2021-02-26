@@ -2,14 +2,13 @@ package team.gif.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import team.gif.lib.AxisButton;
 import team.gif.robot.commands.indexer.ToggleIndexer;
-import team.gif.robot.commands.shooter.shooterCommand;
+import team.gif.robot.commands.shooter.RevShooterFlywheel;
 import team.gif.robot.commands.collector.*;
-import team.gif.robot.commands.shooter.IndexerPushShooter;
+import team.gif.robot.commands.shooter.IndexOut;
 
 
 public class OI {
@@ -72,8 +71,8 @@ public class OI {
          * dRT.whileHeld(new EjectCommand());
          *
          */
-        dLT.whileHeld(new shooterCommand());
-        dRT.whileHeld(new IndexerPushShooter());
+        dLT.whileHeld(new RevShooterFlywheel());
+        dRT.whileHeld(new IndexOut());
 
         dLB.whenPressed(new CollectorDown());
         dLB.whileHeld(new CollectCommand());
