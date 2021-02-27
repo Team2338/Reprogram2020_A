@@ -2,7 +2,9 @@
 package team.gif.robot;
 
 import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
@@ -37,9 +39,10 @@ public class Robot extends TimedRobot {
 
   private autoMode chosenAuto;
 
+  private Timer _elapsedTime = new Timer();
 
   public static Limelight limelight;
-
+  private final Compressor compressor = new Compressor();
   public static ShuffleboardTab autoTab = Shuffleboard.getTab("PreMatch");
   private NetworkTableEntry allianceEntry = autoTab.add("Alliance","Startup")
                                                     .withPosition(3,0)
@@ -113,13 +116,19 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     System.out.println("autonomous init start");
 
+    // used for delaying the start of autonomous
+    _elapsedTime.reset();
+    _elapsedTime.start();
+    System.out.println("Auto: Timers Reset");
+
     drivetrain.resetEncoders();
     drivetrain.resetPose();
     System.out.println("Auto: Sensors Reset");
 
     updateauto();
-      System.out.println("Auto: auto selection updated");
-
+    System.out.println("Auto: auto selection updated");
+    compressor.stop();
+    System.out.println("Auto: Compressor stopped");
     m_autonomousCommand.schedule();
     indexCommand.schedule();
 
@@ -147,6 +156,7 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.cancel();
     }
     oi = new OI();
+    compressor.start();
     driveCommand.schedule();
     indexCommand.schedule();
   }
