@@ -140,7 +140,6 @@ public class Drivetrain extends SubsystemBase {
         m_drive.tankDrive(leftPercent,rightPercent);
     }
 
-
     // -------------- new for Trajectory -------------------
     @Override
     public void periodic() {

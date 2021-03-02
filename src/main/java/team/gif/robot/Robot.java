@@ -59,7 +59,7 @@ public class Robot extends TimedRobot {
     System.out.println("robot init");
     tabsetup();
     // autonomous chooser on the dashboard.
-
+    limelight = new Limelight();
     driveCommand = new Drive(Drivetrain.getInstance());
     drivetrain = Drivetrain.getInstance();
     indexCommand = new IndexIn();
