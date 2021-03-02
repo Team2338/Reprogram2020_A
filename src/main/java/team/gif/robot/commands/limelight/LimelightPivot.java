@@ -37,7 +37,18 @@ public class LimelightPivot extends CommandBase {
       double constant = 5;
       double lPower = tx * constant;
       double rPower = -lPower;
-      Drivetrain.getInstance().setSpeed(lPower, rPower);
+      if (lPower > 3){
+        Drivetrain.getInstance().setSpeed(lPower, rPower);
+      }
+      else if(lPower <= 3 && lPower > 0){
+        Drivetrain.getInstance().setSpeed(3, -3);
+      }
+      else if(rPower > 3){
+        Drivetrain.getInstance().setSpeed(lPower, rPower);
+      }
+      else{
+        Drivetrain.getInstance().setSpeed(-3,3);
+      }
 
     }
 
@@ -46,6 +57,7 @@ public class LimelightPivot extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    tx = limelight.getXOffset();
     if (tx <= txThreshold && tx >= -txThreshold) {
       return true;
     }
