@@ -42,7 +42,6 @@ public class Robot extends TimedRobot {
 
   private autoMode chosenAuto;
 
-  private Timer _elapsedTime = new Timer();
 
   public static Limelight limelight;
   private final Compressor compressor = new Compressor();
@@ -121,10 +120,7 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     System.out.println("autonomous init start");
 
-    // used for delaying the start of autonomous
-    _elapsedTime.reset();
-    _elapsedTime.start();
-    System.out.println("Auto: Timers Reset");
+
 
     drivetrain.resetEncoders();
     drivetrain.resetPose();
