@@ -9,6 +9,7 @@ package team.gif.robot.commands.limelight;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
+import team.gif.robot.Robot;
 import team.gif.robot.commands.shooter.RapidFire;
 import team.gif.robot.subsystems.Shooter;
 import team.gif.robot.commands.shooter.RevShooterFlywheel;
@@ -46,20 +47,24 @@ public class AutoAim extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(RobotIsStill == false){
+    if(!RobotIsStill){
       DifferentialDriveWheelSpeeds currWheelSpeeds = Drivetrain.getInstance().getWheelSpeeds();
       if(Math.abs(currWheelSpeeds.leftMetersPerSecond) < speedThreshold && Math.abs(currWheelSpeeds.leftMetersPerSecond) > backSpeedThreshold){
         RobotIsStill = true;
       }
     }
-    if(RobotIsStill == true) {
+    if(RobotIsStill) {
       targetLocked = limelight.hasTarget();
-      if(targetLocked == true) {
+      if(targetLocked) {
         ty = limelight.getYOffset();
         //Numerator assumes that the camera is mounted 1 foot from the ground; Calculated by height from carpet to tall target - carpet to camera
         Distance = 86.25 / tanOverflowPrevent;
-        new RevShooterFlywheel();
-        new RapidFire();
+        System.out.println(Distance);
+        if (limelight.getXOffset() > -1.0 && limelight.getXOffset() < 1.0) {
+          new RevShooterFlywheel();
+          new RapidFire();
+        }
+
       }
       System.out.println(Distance);
     }
@@ -75,5 +80,6 @@ public class AutoAim extends CommandBase {
   public void end(boolean interrupted) {
     RobotIsStill = false;
     Shooter.getInstance().setVoltage(0);
+    limelight.setLEDMode(1);
   }
 }

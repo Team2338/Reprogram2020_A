@@ -14,7 +14,7 @@ import static team.gif.robot.Robot.limelight;
 /**
  * An example command that uses an example subsystem.
  */
-public class LimelightCommand extends CommandBase {
+public class LimelightPivot extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
 
   double tx;
