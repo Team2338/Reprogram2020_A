@@ -202,8 +202,10 @@ public class Robot extends TimedRobot {
 
   public void updateauto(){
 
-    if(chosenAuto == autoMode.MOBILITY){
-        m_autonomousCommand = new Mobility();
+    if(chosenAuto == autoMode.MOBILITY) {
+      m_autonomousCommand = new Mobility();
+    }else if(chosenAuto == autoMode.MOBILITY_FWD){
+      m_autonomousCommand = new MobilityFwd();
     } else if(chosenAuto ==null) {
         System.out.println("Autonomous selection is null. Robot will do nothing in auto :(");
     }
