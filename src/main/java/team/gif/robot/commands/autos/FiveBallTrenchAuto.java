@@ -11,6 +11,7 @@ import team.gif.lib.RobotTrajectory;
 import team.gif.robot.commands.collector.CollectCommand;
 import team.gif.robot.commands.collector.CollectorDown;
 import team.gif.robot.commands.collector.CollectorUp;
+import team.gif.robot.commands.shooter.shooterCommand;
 import team.gif.robot.subsystems.Drivetrain;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class FiveBallTrenchAuto extends SequentialCommandGroup {
         Trajectory trajectory = TrajectoryGenerator.generateTrajectory(
                 List.of(
                         new Pose2dFeet().set(-10.6, 0.0, 0.0),
-                        new Pose2dFeet().set(-3.0, 0.0, 0.0)
+                        new Pose2dFeet().set(-3.0, 0.0, 7.0)
                 ),
                 RobotTrajectory.getInstance().configForward
         );
@@ -43,7 +44,6 @@ public class FiveBallTrenchAuto extends SequentialCommandGroup {
         // Run path following command, then stop at the end.
         return rc.andThen(() -> Drivetrain.getInstance().tankDriveVolts(0, 0));
     }
-
 
     public FiveBallTrenchAuto() {
         System.out.println("Auto: FiveBallTrenchAuto Selected");
@@ -55,8 +55,6 @@ public class FiveBallTrenchAuto extends SequentialCommandGroup {
                 reverse(),
                 new CollectCommand()),
             forward(),
-
-                //Shoot three balls.
 
                 new PrintCommand("Auto: FiveBallTrenchAuto Ended")
         );
