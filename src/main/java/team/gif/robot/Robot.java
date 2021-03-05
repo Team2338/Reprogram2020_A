@@ -72,8 +72,6 @@ public class Robot extends TimedRobot {
     drivetrain = Drivetrain.getInstance();
     indexCommand = new IndexIn();
 
-    SmartDashboard.putData("Reset Yaw", new ResetDirection());
-
   }
 
   /**
@@ -100,7 +98,8 @@ public class Robot extends TimedRobot {
 
 //    SmartDashboard.putNumber("tx",limelight.getXOffset());
 //    SmartDashboard.putNumber("ty",limelight.getYOffset());
-
+//
+    SmartDashboard.putData("ResetHead", new ResetDirection());
 
 //    SmartDashboard.putBoolean("hastarget",limelight.hasTarget());
     CommandScheduler.getInstance().run();
@@ -192,6 +191,7 @@ public class Robot extends TimedRobot {
 
     autoModeChooser.setDefaultOption("Mobility", autoMode.MOBILITY);
 
+      autoModeChooser.addOption("Mobility Forward", autoMode.MOBILITY_FWD);
     autoTab.add("Auto Select",autoModeChooser)
             .withWidget(BuiltInWidgets.kComboBoxChooser)
             .withPosition(1,0)

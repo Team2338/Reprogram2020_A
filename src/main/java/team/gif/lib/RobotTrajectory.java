@@ -47,7 +47,7 @@ public class RobotTrajectory {
         Constants.autoConstants.kMaxAccelerationMetersPerSecondSquared)
         // Add kinematics to ensure max speed is actually obeyed
         .setKinematics(Constants.drivetrain.kDriveKinematics)
-        //.setReversed(false)
+        .setReversed(false)
         // Apply the voltage constraint
         .addConstraint(autoVoltageConstraint)
         .addConstraint( new CentripetalAccelerationConstraint(1));
