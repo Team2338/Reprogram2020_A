@@ -71,7 +71,7 @@ public class Robot extends TimedRobot {
     drivetrain = Drivetrain.getInstance();
     indexCommand = new IndexIn();
 
-    SmartDashboard.putData("Reset Yaw", new ResetDirection());
+    SmartDashboard.putData("ResetHead", new ResetDirection());
 
   }
 

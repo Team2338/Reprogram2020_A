@@ -35,7 +35,7 @@ public class FiveBallTrenchAuto extends SequentialCommandGroup {
         Trajectory trajectory = TrajectoryGenerator.generateTrajectory(
                 List.of(
                         new Pose2dFeet().set(-10.6, 0.0, 0.0),
-                        new Pose2dFeet().set(-3.0, 0.0, 7.0)
+                        new Pose2dFeet().set(-3.0, 0.0, -7.0)
                 ),
                 RobotTrajectory.getInstance().configForward
         );
