@@ -8,7 +8,11 @@
 package team.gif.robot.commands.limelight;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import team.gif.robot.commands.shooter.RapidFire;
+import team.gif.robot.commands.shooter.RevShooterFlywheel;
 import team.gif.robot.subsystems.Drivetrain;
+import team.gif.robot.subsystems.Shooter;
+
 import static team.gif.robot.Robot.limelight;
 
 /**
@@ -48,7 +52,12 @@ public class LimelightPivot extends CommandBase {
             }
 
         }
-
+        if(isOnTarget) {
+            new RevShooterFlywheel();
+                if (Shooter.getInstance().getShooterVelocity() > 3800){
+                    new RapidFire();
+                }
+        }
     }
 
     // Returns true when the command should end.

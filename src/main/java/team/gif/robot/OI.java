@@ -72,8 +72,8 @@ public class OI {
          *
          */
         dLT.whileHeld(new RevShooterFlywheel());
-        dRT.whileHeld(new RapidFire());
-        dA.whenPressed(new LimelightPivot());
+        dA.whileHeld(new RapidFire());
+        dRT.whileHeld(new LimelightPivot());
         //dB.whenPressed(new AutoAim());
 
         dLB.whenPressed(new CollectorDown());
